@@ -1,0 +1,58 @@
+*****SERVER*****
+
+//import java.lang.*;
+import java.io.*;
+import java.net.*;
+
+class server1 {
+   public static void main(String args[]) {
+      String data = "Hello Welcome Everyone";
+      try {
+         ServerSocket srvr = new ServerSocket(1234);
+         Socket skt = srvr.accept();
+         System.out.print("Server has connected!\n");
+         PrintWriter out = new PrintWriter(skt.getOutputStream(), true);
+         System.out.println("Sending string: '" + data + "'\n");
+         System.out.println(data);
+         out.close();
+         skt.close();
+         srvr.close();
+      }
+      catch(Exception e) {
+         System.out.print("Whoops! It didn't work!\n");
+      }
+   }
+}
+
+*****CLIENT*****
+
+//import java.lang.*;
+import java.io.*;
+import java.net.*;
+
+class server1 {
+   public static void main(String args[]) {
+      String data = "Hello Welcome Everyone";
+      try {
+         ServerSocket srvr = new ServerSocket(1234);
+         Socket skt = srvr.accept();
+         System.out.print("Server has connected!\n");
+         PrintWriter out = new PrintWriter(skt.getOutputStream(), true);
+         System.out.println("Sending string: '" + data + "'\n");
+         System.out.println(data);
+         out.close();
+         skt.close();
+         srvr.close();
+      }
+      catch(Exception e) {
+         System.out.print("Whoops! It didn't work!\n");
+      }
+   }
+}
+
+*****OUTPUT*****
+
+Server has connected!
+Sending string: 'Hello Welcome Everyone'
+
+Hello Welcome Everyone
