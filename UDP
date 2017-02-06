@@ -1,0 +1,55 @@
+***********************UDP Sender*********************
+import java.net.*;  
+public class send{  
+    private static Object addr;
+  public static void main(String[] args) throws Exception {  
+    DatagramSocket ds = new DatagramSocket();  
+    String str = "Welcome java";  
+    InetAddress ip = InetAddress.getByName("172.16.0.221");  
+    System.out.println(ip);
+    
+    DatagramPacket dp = new DatagramPacket(str.getBytes(), str.length(), ip, 3000);  
+    ds.send(dp);  
+    ds.close();  
+  }  
+} 
+
+
+
+***********************UDP Receiver*******************
+import java.net.*;  
+public class Rece{  
+  public static void main(String[] args) throws Exception 
+  {  
+      try (DatagramSocket ds = new DatagramSocket(3000)) 
+      {
+           
+          InetAddress ip = InetAddress.getByName("172.16.0.221");  
+          System.out.println(ip);
+          byte[] buf = new byte[1024];
+          DatagramPacket dp = new DatagramPacket(buf, 1024);
+          ds.receive(dp);
+          String str = new String(dp.getData(), 0, dp.getLength());
+          System.out.println(str);
+          ds.close();
+      }     
+  }  
+}
+
+
+**********************OUTPU*******************
+
+run:
+/172.16.0.221
+BUILD SUCCESSFUL (total time: 0 seconds)
+
+
+
+
+
+
+
+run:
+/172.16.0.221
+Welcome java
+BUILD SUCCESSFUL (total time: 3 seconds)
